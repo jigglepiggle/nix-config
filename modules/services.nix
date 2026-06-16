@@ -49,7 +49,7 @@
       RUNTIME_PM_ON_BAT = "auto";
 
       # Charge thresholds extend battery lifespan; supported via thinkpad_acpi
-      START_CHARGE_THRESH_BAT0 = 20;
+      START_CHARGE_THRESH_BAT0 = 0;
       STOP_CHARGE_THRESH_BAT0  = 80;
 
       BAT_PROTECT = 0;
@@ -86,8 +86,8 @@
 
   location = {
     provider  = "manual";
-    latitude  = 52.57;
-    longitude = -0.24;
+    latitude  = 52.50;
+    longitude = -1.90;
   };
   services.redshift = {
     enable      = true;
