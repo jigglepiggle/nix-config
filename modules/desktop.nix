@@ -27,6 +27,7 @@ let
     xss-lock --transfer-sleep-lock \
       -n "$(dirname $(which xsecurelock))/../libexec/xsecurelock/dimmer" \
       -l -- env XSECURELOCK_PAM_SERVICE=xsecurelock xsecurelock &
+    dbus-update-activation-environment --systemd DISPLAY XAUTHORITY XDG_CURRENT_DESKTOP=DWM
     exec ${dwm-custom}/bin/dwm
   '';
 
@@ -125,6 +126,10 @@ in
     blueman
   ];
 
+  environment.sessionVariables = {
+    XDG_CURRENT_DESKTOP = "DWM";
+  };
+
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
@@ -143,8 +148,6 @@ in
   services.gnome.at-spi2-core.enable = true;
 
   services.tumbler.enable = true;
-
-  programs.light.enable = true;
 
   programs.dconf.enable = true;
 }

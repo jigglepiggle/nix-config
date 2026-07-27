@@ -22,12 +22,22 @@
       "storage"
       "seat"
     ];
-    shell = pkgs.fish;
+    shell = pkgs.zsh;
   };
 
   nix.settings.trusted-users = [ "root" "lain" ];
 
-  programs.fish.enable = true;
+  programs.zsh = {
+    enable = true;
+    ohMyZsh = {
+      enable = true;
+      plugins = [
+        "git"
+        "colorize"
+        "colored-man-pages"
+      ];
+    };
+  };
 
-  environment.shells = with pkgs; [ bash fish ];
+  environment.shells = with pkgs; [ zsh ];
 }

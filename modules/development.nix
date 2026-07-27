@@ -21,7 +21,6 @@
 
     rustup
     nodejs_24
-    nodePackages.npm
 
     python314
     python3Packages.pip
@@ -55,7 +54,9 @@
 
     kitty
     tmux
-    fish
+    zsh
+    zsh-autosuggestions
+    zsh-syntax-highlighting
     fzf
     ripgrep
     eza

@@ -7,6 +7,7 @@
     ./modules/boot.nix
     ./modules/networking.nix
     ./modules/desktop.nix
+    ./modules/niri.nix
     ./modules/audio.nix
     ./modules/gaming.nix
     ./modules/development.nix
@@ -22,7 +23,7 @@
     ./modules/virtualisation.nix
   ];
 
-  system.stateVersion = "26.05";
+  system.stateVersion = "25.11";
   time.timeZone = "Europe/London";
   i18n.defaultLocale = "en_GB.UTF-8";
   i18n.extraLocaleSettings = {

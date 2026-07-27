@@ -65,7 +65,6 @@
 
     cmatrix
     sl
-    neofetch
     fastfetch
     onefetch
     bluetui
