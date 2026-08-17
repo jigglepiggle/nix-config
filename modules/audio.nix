@@ -21,7 +21,7 @@
     playerctl     # MPRIS media key controller
     cava          # terminal audio visualiser
     lame          # MP3 encoder
-    faac
+#    faac
     faad2
     flac
     libvorbis
