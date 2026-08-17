@@ -210,7 +210,7 @@ in
   ];
 
   services.fprintd = {
-    enable = true;
+    enable = false;
     tod = {
       enable = true;
       driver = libfprint-2-tod1-synatudor;
@@ -223,12 +223,12 @@ in
   # Register tudor-host-launcher systemd service
   systemd.packages = [ libfprint-2-tod1-synatudor ];
 
-  security.pam.services.login.fprintAuth = true;
-  security.pam.services.sudo.fprintAuth  = true;
+  #security.pam.services.login.fprintAuth = true;
+  #security.pam.services.sudo.fprintAuth  = true;
 
   security.pam.services.xsecurelock = {
     text = ''
-      auth sufficient pam_fprintd.so
+      #auth sufficient pam_fprintd.so
       auth include login
     '';
   };
