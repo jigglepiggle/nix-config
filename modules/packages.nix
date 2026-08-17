@@ -18,6 +18,8 @@
     texliveFull
     texstudio
 
+    obsidian
+
     flatpak
 
     p7zip

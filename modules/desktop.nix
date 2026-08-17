@@ -121,22 +121,22 @@ in
     qt5.qtwayland
     qt6Packages.qt6ct
 
-    networkmanagerapplet
-    pasystray
-    blueman
+    #networkmanagerapplet
+    #pasystray
+    #blueman
   ];
 
-  environment.sessionVariables = {
-    XDG_CURRENT_DESKTOP = "DWM";
-  };
+  #environment.sessionVariables = {
+  #  XDG_CURRENT_DESKTOP = "DWM";
+  #};
 
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-    ];
-    config.common.default = "gtk";
-  };
+  #xdg.portal = {
+  #  enable = true;
+  #  extraPortals = with pkgs; [
+  #    xdg-desktop-portal-gtk
+  #  ];
+  #  config.common.default = "gtk";
+  #};
 
   # services.libinput and services.acpid are defined in hardware.nix and
   # services.nix respectively — only one definition per attribute is allowed

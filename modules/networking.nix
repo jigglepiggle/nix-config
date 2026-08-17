@@ -20,7 +20,7 @@
     powerOnBoot = true;
     settings.General.Experimental = true;
   };
-  services.blueman.enable = true;
+  #services.blueman.enable = true;
 
   services.openvpn.servers  = { };
   networking.wireguard.enable = false;
