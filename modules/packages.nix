@@ -79,6 +79,8 @@
     starship
     zoxide
     bat
+
+    thunar
   ];
 
   services.flatpak.enable        = true;
