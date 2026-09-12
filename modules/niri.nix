@@ -1,9 +1,11 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
+  imports = [ inputs.dms.nixosModules.dank-material-shell ];
+
   programs.niri.enable = true;
 
-  programs.dms-shell = {
+  programs.dank-material-shell = {
     enable = true;
     systemd = {
       enable            = true;

@@ -1,8 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 let
   dwm-custom = pkgs.dwm.overrideAttrs (old: {
-    src = /home/lain/Development/applications/dwm;
+    src = inputs.dwm-src;
     postPatch = ''
       sed -i "s|PREFIX = /usr/local|PREFIX = $out|" config.mk
     '';

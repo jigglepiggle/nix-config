@@ -49,18 +49,17 @@
     trousers
   ];
 
-  # Driver itself now lives in modules/overlays/fingerprint.nix —
   # pkgs.libfprint-2-tod1-synatudor comes from the overlay
-  services.fprintd = {
-    enable = false;
-    tod = {
-      enable = true;
-      driver = pkgs.libfprint-2-tod1-synatudor;
-    };
-  };
+  #services.fprintd = {
+  #  enable = false;
+  #  tod = {
+  #    enable = true;
+  #    driver = pkgs.libfprint-2-tod1-synatudor;
+  #  };
+  #};
 
-  services.dbus.packages = [ pkgs.libfprint-2-tod1-synatudor ];
-  systemd.packages       = [ pkgs.libfprint-2-tod1-synatudor ];
+  #services.dbus.packages = [ pkgs.libfprint-2-tod1-synatudor ];
+  #systemd.packages       = [ pkgs.libfprint-2-tod1-synatudor ];
 
   #security.pam.services.login.fprintAuth = true;
   #security.pam.services.sudo.fprintAuth  = true;

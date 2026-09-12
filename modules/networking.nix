@@ -45,5 +45,6 @@
     thc-hydra
     wireguard-tools
     wol             # Wake-on-LAN
+    librepods
   ];
 }
