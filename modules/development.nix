@@ -51,6 +51,8 @@
 
     nano
     vscode
+    neovim
+    lunarvim
 
     kitty
     tmux

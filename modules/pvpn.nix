@@ -1,24 +1,36 @@
-{ lib, buildGoModule, fetchFromGitHub }:
+{ config, pkgs, lib, ... }:
 
-buildGoModule rec {
-  pname = "pvpn";
-  version = "0.2.6";
+{
+  environment.systemPackages = [ pkgs.pvpn ];
 
-  src = fetchFromGitHub {
-    owner = "YourDoritos";
-    repo = "pVPN";
-    rev = "v${version}";
-    hash = ""; # leave blank, nix build will tell you the right hash
-  };
+  users.groups.pvpn = { };
+  users.users.lain.extraGroups = [ "pvpn" ];
 
-  vendorHash = ""; # same — leave blank first time
+  systemd.services.pvpnd = {
+    description = "pVPN Daemon - Proton VPN Connection Manager";
+    after        = [ "network-online.target" ];
+    wants        = [ "network-online.target" ];
+    wantedBy     = [ "multi-user.target" ];
 
-  subPackages = [ "cmd/pvpnd" "cmd/pvpn" "cmd/pvpnctl" ]; # verify against actual repo layout
+    environment.HOME = "/var/lib/pvpn";
 
-  meta = with lib; {
-    description = "Proton VPN client for Linux with terminal UI, WireGuard & Stealth protocol";
-    homepage = "https://github.com/YourDoritos/pVPN";
-    license = licenses.gpl3Only;
-    platforms = platforms.linux;
+    serviceConfig = {
+      Type    = "simple";
+      ExecStart = "${pkgs.pvpn}/bin/pvpnd";
+      Restart   = "on-failure";
+      RestartSec = 5;
+
+      RuntimeDirectory   = "pvpn";
+      StateDirectory     = "pvpn";
+      StateDirectoryMode = "0700";
+
+      ReadWritePaths = [ "/run/pvpn" "/etc/resolv.conf" "/etc/pvpn" "/var/lib/pvpn" ];
+
+      ProtectHome      = true;
+      PrivateTmp       = true;
+      LockPersonality  = true;
+      RestrictRealtime = true;
+      RestrictSUIDSGID = true;
+    };
   };
 }

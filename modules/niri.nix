@@ -2,31 +2,26 @@
 
 {
   programs.niri.enable = true;
-  
+
   programs.dms-shell = {
     enable = true;
-
     systemd = {
-      enable = true;             # Systemd service for auto-start
-      restartIfChanged = true;   # Auto-restart dms.service when dms-shell changes
-      target = "graphical-session.target";
+      enable            = true;
+      restartIfChanged  = true;
+      target            = "graphical-session.target";
     };
-    
-    # Core features
-    enableSystemMonitoring = true;     # System monitoring widgets (dgop)
-    enableVPN = true;                  # VPN management widget
-    enableDynamicTheming = true;       # Wallpaper-based theming (matugen)
-    enableAudioWavelength = true;      # Audio visualizer (cava)
-    enableCalendarEvents = true;       # Calendar integration (khal)
+    enableSystemMonitoring = true;
+    enableVPN              = true;
+    enableDynamicTheming   = true;
+    enableAudioWavelength  = true;
+    enableCalendarEvents   = true;
   };
 
   programs.dsearch = {
     enable = true;
-
-    # Systemd service configuration
     systemd = {
-      enable = true;               # Enable systemd user service
-      target = "graphical-session.target";   # Start with user session
+      enable = true;
+      target = "graphical-session.target";
     };
   };
 
@@ -40,13 +35,22 @@
   };
 
   environment.systemPackages = with pkgs; [
-    xwayland-satellite 
-    alacritty 
-    fuzzel 
-    awww
+    xwayland-satellite
+    alacritty
+    mpvpaper
     waybar
     grim
     slurp
     quickshell
+
+    # moved in from the old desktop.nix
+    wayland
+    gtk-layer-shell
+    xwayland
+    xdg-desktop-portal
+
+    qt6.qtwayland
+    qt5.qtwayland
+    qt6Packages.qt6ct
   ];
 }

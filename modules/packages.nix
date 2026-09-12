@@ -70,6 +70,7 @@
     fastfetch
     onefetch
     bluetui
+    pokeshell
 
     rclone
     fontconfig

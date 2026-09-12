@@ -22,7 +22,6 @@ let
     slstatus &
     dunst &
     nm-applet &
-    #xset dpms 300 600 900
     xset s off -dpms
     xss-lock --transfer-sleep-lock \
       -n "$(dirname $(which xsecurelock))/../libexec/xsecurelock/dimmer" \
@@ -30,7 +29,6 @@ let
     dbus-update-activation-environment --systemd DISPLAY XAUTHORITY XDG_CURRENT_DESKTOP=DWM
     exec ${dwm-custom}/bin/dwm
   '';
-
 in
 {
   services.xserver = {
@@ -46,8 +44,7 @@ in
   # No display manager — log in on a TTY and run startx
   services.xserver.displayManager.startx.enable = true;
 
-  # Xorg needs setuid to open /dev/tty0 when launched via startx from a TTY.
-  # Without this, X fails with "Cannot open /dev/tty0 (Permission denied)".
+  # Xorg needs setuid to open /dev/tty0 when launched via startx from a TTY
   security.wrappers.Xorg = {
     source  = "${pkgs.xorg.xorgserver}/bin/Xorg";
     owner   = "root";
@@ -88,7 +85,6 @@ in
     xorg.xev
     xorg.xprop
     xorg.xset
-    xorg.xsetroot
     xorg.xinput
     xorg.xmodmap
     xorg.xdpyinfo
@@ -102,12 +98,6 @@ in
     transset
     xbacklight
 
-    wayland
-    gtk-layer-shell
-    xwayland
-    xdg-desktop-portal
-    xdg-desktop-portal-gtk
-
     adwaita-icon-theme
     hicolor-icon-theme
     libadwaita
@@ -116,38 +106,14 @@ in
     gtk3
     gtk4
     lxappearance
-
-    qt6.qtwayland
-    qt5.qtwayland
-    qt6Packages.qt6ct
-
-    #networkmanagerapplet
-    #pasystray
-    #blueman
   ];
-
-  #environment.sessionVariables = {
-  #  XDG_CURRENT_DESKTOP = "DWM";
-  #};
-
-  #xdg.portal = {
-  #  enable = true;
-  #  extraPortals = with pkgs; [
-  #    xdg-desktop-portal-gtk
-  #  ];
-  #  config.common.default = "gtk";
-  #};
 
   # services.libinput and services.acpid are defined in hardware.nix and
   # services.nix respectively — only one definition per attribute is allowed
 
-  services.upower.enable = true;
-
-  security.polkit.enable = true;
-
+  services.upower.enable          = true;
+  security.polkit.enable          = true;
   services.gnome.at-spi2-core.enable = true;
-
-  services.tumbler.enable = true;
-
-  programs.dconf.enable = true;
+  services.tumbler.enable         = true;
+  programs.dconf.enable           = true;
 }
