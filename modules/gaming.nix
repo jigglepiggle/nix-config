@@ -15,7 +15,7 @@
   programs.gamemode.enable  = true;
 
   environment.systemPackages = with pkgs; [
-    wineWowPackages.stagingFull
+    wineWow64Packages.stable
     winetricks
     prismlauncher
     ryzenadj

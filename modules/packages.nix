@@ -5,6 +5,13 @@
     firefox
     discord
 
+    ((winboat.override { electron_40 = electron_43; }).overrideAttrs (old: {
+    nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ pkgs.jq ];
+    postPatch = (old.postPatch or "") + ''
+      jq '.npmRebuild = false' electron-builder.json > eb.tmp && mv eb.tmp electron-builder.json
+    '';
+    }))
+
     libreoffice-fresh
     hunspell
     hunspellDicts.en_GB-ise
