@@ -56,6 +56,10 @@
 
     libwacom
     xf86_input_wacom
+    libfido2
+
+    cifs-utils
+    gvfs
 
     libimobiledevice  # Apple iOS devices
     ifuse             # mount iPhone/iPad

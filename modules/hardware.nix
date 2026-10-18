@@ -1,9 +1,6 @@
 { config, pkgs, lib, ... }:
 
 # ThinkPad L14 Gen 1 AMD — Ryzen 7 4750U (Renoir)
-# No dedicated nixos-hardware profile exists for this model; this module
-# manually applies the same tweaks as the P14s AMD Gen 1 (same Renoir SoC)
-# plus L14-specific quirks.
 #
 # Hardware:
 #   CPU  : AMD Ryzen 7 4750U (8c/16t, Renoir, 15W TDP)
@@ -99,14 +96,11 @@
     IdleAction                   = "ignore";
   };
 
-  # Compressed swap avoids SSD wear and is fast on the 4750U
   zramSwap = {
     enable        = true;
     algorithm     = "zstd";
     memoryPercent = 50;
   };
-
-  # SD card reader (RTS5227S) is handled automatically by rtsx_pci
 
   environment.systemPackages = with pkgs; [
     ryzenadj      # runtime TDP / power limit tuning

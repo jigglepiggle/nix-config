@@ -94,7 +94,6 @@
     temperature = { day = 6500; night = 3500; };
   };
 
-  # services.libinput is the sole definition — desktop.nix was cleaned up
   services.libinput = {
     enable                      = true;
     touchpad.tapping            = true;
